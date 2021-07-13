@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/constraintLayout">
+
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:ems="10"
+                    android:id="@+id/userInputEditText"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:enabled="false"
+                    android:ems="10"
+                    android:id="@+id/resultEditText"
+                    app:layout_constraintTop_toBottomOf="@+id/userInputEditText"
+                    app:layout_constraintStart_toStartOf="parent"/>
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/userSpinner"
+                    app:layout_constraintStart_toEndOf="@+id/userInputEditText"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/resultSpinner"
+                    app:layout_constraintStart_toEndOf="@+id/resultEditText"
+                    app:layout_constraintTop_toBottomOf="@+id/userInputEditText"/>
+            <Button
+                    android:text="Przelicz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/convertButton"
+                    app:layout_constraintTop_toBottomOf="@+id/resultEditText"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/currencyRecyclerView"
+                app:layout_constraintHorizontal_bias="0.498" app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                android:layout_marginTop="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
