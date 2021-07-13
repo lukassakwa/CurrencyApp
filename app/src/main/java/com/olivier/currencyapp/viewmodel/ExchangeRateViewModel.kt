@@ -1,14 +1,9 @@
-package com.olivier.currencyapp.ui.exchangeRate
+package com.olivier.currencyapp.viewmodel
 
 import androidx.lifecycle.*
-import com.olivier.currencyapp.api.room.RatesDao
 import com.olivier.currencyapp.base.network.CheckNetworkConnection
 import com.olivier.currencyapp.data.RatesItem
 import com.olivier.currencyapp.repositories.ExchangeRateRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlin.math.round
 
 class ExchangeRateViewModel(
     private val exchangeRateRepository : ExchangeRateRepository,
@@ -26,7 +21,6 @@ class ExchangeRateViewModel(
         checkNetworkConnection.checkConnection()
     }
 
-    //convert
     fun convert(text : String){
         if(text.isNotEmpty()) {
             userInput = text.toDouble()

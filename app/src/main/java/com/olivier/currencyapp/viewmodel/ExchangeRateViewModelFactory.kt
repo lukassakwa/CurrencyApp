@@ -1,6 +1,5 @@
-package com.olivier.currencyapp.ui.exchangeRate
+package com.olivier.currencyapp.viewmodel
 
-import android.net.ConnectivityManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.olivier.currencyapp.base.network.CheckNetworkConnection

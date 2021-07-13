@@ -21,6 +21,8 @@ import com.olivier.currencyapp.repositories.ExchangeRateRepository
 import com.olivier.currencyapp.ui.adapters.recyclerview.ExchangeAdapter
 import com.olivier.currencyapp.ui.adapters.spinner.ResultSpinnerAdapter
 import com.olivier.currencyapp.ui.adapters.spinner.UserSpinnerAdapter
+import com.olivier.currencyapp.viewmodel.ExchangeRateViewModel
+import com.olivier.currencyapp.viewmodel.ExchangeRateViewModelFactory
 
 class ExchangeRateFragment : Fragment() {
     private lateinit var viewModel: ExchangeRateViewModel
@@ -41,7 +43,8 @@ class ExchangeRateFragment : Fragment() {
         exchangeAdapter = ExchangeAdapter()
 
         viewModel =
-            ViewModelProvider(this, ExchangeRateViewModelFactory(exchangeRateRepository, checkNetworkConnection)).get(ExchangeRateViewModel::class.java)
+            ViewModelProvider(this, ExchangeRateViewModelFactory(exchangeRateRepository, checkNetworkConnection)).get(
+                ExchangeRateViewModel::class.java)
         viewModel.checkInternetConnection()
     }
 
