@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.olivier.currencyapp.ui.exchangeRate.ExchangeRateFragment
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

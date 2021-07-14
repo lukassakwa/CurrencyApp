@@ -1,7 +1,5 @@
 package com.olivier.currencyapp.ui.exchangeRate
 
-import android.content.Context
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -12,21 +10,14 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olivier.currencyapp.R
-import com.olivier.currencyapp.api.room.DatabaseBuilder
-import com.olivier.currencyapp.base.network.CheckNetworkConnection
 import com.olivier.currencyapp.databinding.ExchangeRateFragmentBinding
-import com.olivier.currencyapp.repositories.ExchangeRateRepository
 import com.olivier.currencyapp.ui.adapters.recyclerview.ExchangeAdapter
 import com.olivier.currencyapp.ui.adapters.spinner.ResultSpinnerAdapter
 import com.olivier.currencyapp.ui.adapters.spinner.UserSpinnerAdapter
 import com.olivier.currencyapp.viewmodel.ExchangeRateViewModel
-import com.olivier.currencyapp.viewmodel.ExchangeRateViewModelFactory
-import dagger.hilt.DefineComponent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,7 +31,6 @@ class ExchangeRateFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         exchangeAdapter = ExchangeAdapter()
-
         viewModel.checkInternetConnection()
     }
 
