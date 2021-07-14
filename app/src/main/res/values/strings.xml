@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">CurrencyApp</string>
     <string-array name="currency_array">
-        <item>Wybierz walute</item>
         <item>USD</item>
         <item>AUD</item>
         <item>CAD</item>

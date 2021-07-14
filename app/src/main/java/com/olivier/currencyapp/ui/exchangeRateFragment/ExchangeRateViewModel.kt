@@ -11,6 +11,7 @@ class ExchangeRateViewModel @Inject constructor(
     private val exchangeRateRepository : ExchangeRateRepository,
     private val checkNetworkConnection : CheckNetworkConnection
 ) : ViewModel() {
+    //get actual RatesItems list from database
     var ratesModel : LiveData<List<RatesItem>> = exchangeRateRepository.readFromDatabase()
 
     var result : MutableLiveData<Double> = MutableLiveData(0.0)
@@ -18,10 +19,12 @@ class ExchangeRateViewModel @Inject constructor(
     private var buyExchange: Double = 0.0
     private var sellExchange : Double = 0.0
 
+    //check if device is connected to internet
     fun checkInternetConnection(){
         checkNetworkConnection.checkConnection()
     }
 
+    //currency conversion
     fun convert(userInput : Double){
         if (buyExchange != 0.0 && sellExchange != 0.0 && userInput != 0.0) {
             var localResult = (userInput * buyExchange) / sellExchange
@@ -30,12 +33,10 @@ class ExchangeRateViewModel @Inject constructor(
     }
 
     fun setUserExchange(position : Int){
-        buyExchange = if(position == -1)
-                0.0 else ratesModel.value!![position-1].bid
+        buyExchange = ratesModel.value!![position].bid
     }
 
     fun setResultExchange(position : Int){
-        sellExchange = if(position == -1)
-                0.0 else ratesModel.value!![position-1].ask
+        sellExchange = ratesModel.value!![position].ask
     }
 }
