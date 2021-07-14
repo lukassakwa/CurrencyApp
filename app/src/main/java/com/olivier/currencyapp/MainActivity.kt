@@ -2,7 +2,7 @@ package com.olivier.currencyapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.olivier.currencyapp.ui.exchangeRate.ExchangeRateFragment
+import com.olivier.currencyapp.ui.exchangeRateFragment.ExchangeRateFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

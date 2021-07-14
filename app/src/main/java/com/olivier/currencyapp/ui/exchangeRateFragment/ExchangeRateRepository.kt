@@ -1,4 +1,4 @@
-package com.olivier.currencyapp.repositories
+package com.olivier.currencyapp.ui.exchangeRateFragment
 
 import android.util.Log
 import androidx.lifecycle.LiveData
