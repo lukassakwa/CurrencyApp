@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.olivier.currencyapp.api.room.AppDatabase
 import com.olivier.currencyapp.api.room.RatesDao
+import com.olivier.currencyapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +22,7 @@ class RoomModule {
     @Singleton
     fun provideRoom(@ApplicationContext context: Context) : AppDatabase = Room.databaseBuilder(
             context.applicationContext,
-            AppDatabase::class.java, "database-name"
+            AppDatabase::class.java, Constants.DATABASE_NAME
         ).build()
 
     @Provides

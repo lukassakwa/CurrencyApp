@@ -1,6 +1,7 @@
 package com.olivier.currencyapp.di
 
 import com.olivier.currencyapp.api.retrofit.*
+import com.olivier.currencyapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,11 +17,11 @@ import javax.inject.Singleton
 class RetrofitModule {
 
     @Provides
-    fun provideBaseUrl() = "https://api.nbp.pl/api/"
+    fun provideBaseUrl() : String = Constants.BASE_URL
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() = OkHttpClient
+    fun provideOkHttpClient() : OkHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(NetworkInterceptor())
         .build()
@@ -36,8 +37,4 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun provideNbpService(retrofit: Retrofit): NBPService = retrofit.create(NBPService::class.java)
-
-    @Provides
-    @Singleton
-    fun provideApiHelper(nbpRepository: NBPRepository): ApiHelper = nbpRepository
 }
