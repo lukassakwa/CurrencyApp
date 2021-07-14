@@ -8,13 +8,15 @@ import com.olivier.currencyapp.data.RatesItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ExchangeRateRepository(
-    private val ratesDao: RatesDao
+class ExchangeRateRepository @Inject constructor(
+    private val ratesDao: RatesDao,
+    private val nbpRepository: NBPRepository
 ) {
     fun currencyFromRestApi(){
         CoroutineScope(Dispatchers.IO).launch {
-            val response = NBPRepository().getCurrency("C")
+            val response = nbpRepository.getCurrency("C")
             if(response.isSuccessful){
                 //changing mid
                 var rates = response.body()!![0].rates!!

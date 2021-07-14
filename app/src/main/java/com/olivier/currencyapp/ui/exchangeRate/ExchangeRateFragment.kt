@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,28 +26,21 @@ import com.olivier.currencyapp.ui.adapters.spinner.ResultSpinnerAdapter
 import com.olivier.currencyapp.ui.adapters.spinner.UserSpinnerAdapter
 import com.olivier.currencyapp.viewmodel.ExchangeRateViewModel
 import com.olivier.currencyapp.viewmodel.ExchangeRateViewModelFactory
+import dagger.hilt.DefineComponent
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExchangeRateFragment : Fragment() {
-    private lateinit var viewModel: ExchangeRateViewModel
+    private val viewModel: ExchangeRateViewModel by activityViewModels()
+
     private lateinit var binding : ExchangeRateFragmentBinding
     private lateinit var exchangeAdapter : ExchangeAdapter
-    private lateinit var checkNetworkConnection : CheckNetworkConnection
-
-    private lateinit var exchangeRateRepository: ExchangeRateRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val connectivityManager = context!!.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val ratesDao = DatabaseBuilder.getRoom(context!!).ratesDao()
-
-        exchangeRateRepository = ExchangeRateRepository(ratesDao)
-        checkNetworkConnection = CheckNetworkConnection(connectivityManager, exchangeRateRepository)
         exchangeAdapter = ExchangeAdapter()
 
-        viewModel =
-            ViewModelProvider(this, ExchangeRateViewModelFactory(exchangeRateRepository, checkNetworkConnection)).get(
-                ExchangeRateViewModel::class.java)
         viewModel.checkInternetConnection()
     }
 
