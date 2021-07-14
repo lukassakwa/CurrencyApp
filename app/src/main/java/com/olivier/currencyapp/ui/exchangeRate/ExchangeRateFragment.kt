@@ -3,6 +3,7 @@ package com.olivier.currencyapp.ui.exchangeRate
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,6 +68,7 @@ class ExchangeRateFragment : Fragment() {
         binding.currencyRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(activity)
+            adapter = exchangeAdapter
         }
 
         //spinner
@@ -86,7 +88,7 @@ class ExchangeRateFragment : Fragment() {
         viewModel.ratesModel.observe(this, Observer {
             if(it.isNotEmpty()){
                 exchangeAdapter.setCurrency(it)
-                binding.currencyRecyclerView.adapter = exchangeAdapter
+                binding.currencyRecyclerView.adapter!!.notifyDataSetChanged()
                 binding.userSpinner.onItemSelectedListener = UserSpinnerAdapter(viewModel)
                 binding.resultSpinner.onItemSelectedListener = ResultSpinnerAdapter(viewModel)
             }else{
@@ -102,6 +104,10 @@ class ExchangeRateFragment : Fragment() {
 
     private fun onConvert(){
         var text = binding.userInputEditText.text.toString()
-        viewModel.convert(text)
+        if(!TextUtils.isEmpty(text)){
+            viewModel.convert(text.toDouble())
+        }else{
+            binding.userInputEditText.error = "Wpisz wartosc"
+        }
     }
 }

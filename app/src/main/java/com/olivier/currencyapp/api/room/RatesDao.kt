@@ -17,7 +17,7 @@ interface RatesDao {
     fun getElement() : List<RatesItem>
 
     @Update
-    suspend fun updateRates(ratesItems: List<RatesItem>);
+    suspend fun updateRates(ratesItems: List<RatesItem>)
 
     @Insert(onConflict = REPLACE)
     suspend fun insertAll(rate: List<RatesItem>)

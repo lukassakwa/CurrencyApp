@@ -6,8 +6,7 @@ import com.olivier.currencyapp.viewmodel.ExchangeRateViewModel
 
 class UserSpinnerAdapter(var viewModel: ExchangeRateViewModel) : AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        if(position != 0)
-            viewModel.setUserExchange(position)
+        viewModel.setUserExchange(position-1)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
