@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olivier.currencyapp.R
@@ -22,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ExchangeRateFragment : Fragment() {
-    private val viewModel: ExchangeRateViewModel by activityViewModels()
+    private val viewModel: ExchangeRateViewModel by viewModels()
 
     private lateinit var binding : ExchangeRateFragmentBinding
     private lateinit var exchangeAdapter : ExchangeAdapter

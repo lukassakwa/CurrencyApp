@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RetrofitModule {
+class RetrofitModule {
 
     @Provides
     fun provideBaseUrl() = "https://api.nbp.pl/api/"
