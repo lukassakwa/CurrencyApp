@@ -71,13 +71,16 @@ class ExchangeRateFragment : Fragment() {
         //observe data in database
         viewModel.ratesModel.observe(this, Observer {
             if(it.isNotEmpty()){
-                exchangeAdapter.setCurrency(it)
-                binding.currencyRecyclerView.adapter!!.notifyDataSetChanged()
                 binding.userSpinner.onItemSelectedListener = UserSpinnerAdapter(viewModel)
                 binding.resultSpinner.onItemSelectedListener = ResultSpinnerAdapter(viewModel)
+                binding.userSpinner.isEnabled = true
+                binding.resultSpinner.isEnabled = true
             }else{
-                Toast.makeText(context, "connect to Internet", Toast.LENGTH_LONG).show()
+                binding.userSpinner.isEnabled = false
+                binding.resultSpinner.isEnabled = false
             }
+            exchangeAdapter.setCurrency(it)
+            binding.currencyRecyclerView.adapter!!.notifyDataSetChanged()
         })
 
         //observe result
