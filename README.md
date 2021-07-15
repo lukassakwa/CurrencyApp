@@ -10,7 +10,8 @@ Built With
 
     Koltin - is a cross-platform, statically typed, general-purpose programming language with type inference.
     MVVM -  Model-View-ViewModel architecture
-    Hilt - dependency injection library for Android 
+    Hilt - dependency injection library for Android
+    Data Binding - support library that allows to bind UI components in layouts
     Retrofit - the class through which your API interfaces are turned into callable objects
     OkHttp - HTTP client
     Gson - Java library that can be used to convert Java Objects into their JSON representation
