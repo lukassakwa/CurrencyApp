@@ -1,10 +1,13 @@
-package com.olivier.currencyapp.ui.exchangeRateFragment
+package com.olivier.currencyapp.repositories
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.olivier.currencyapp.api.retrofit.NBPRepository
 import com.olivier.currencyapp.api.room.RatesDao
+import com.olivier.currencyapp.base.network.CheckNetworkConnection
 import com.olivier.currencyapp.data.RatesItem
+import com.olivier.currencyapp.utils.Constants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,7 +19,7 @@ class ExchangeRateRepository @Inject constructor(
 ) {
     fun currencyFromRestApi(){
         CoroutineScope(Dispatchers.IO).launch {
-            val response = nbpRepository.getCurrency("C")
+            val response = nbpRepository.getCurrency(Constants.TABLE)
             if(response.isSuccessful){
                 //changing mid
                 var rates = response.body()!![0].rates!!

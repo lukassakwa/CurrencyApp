@@ -3,6 +3,7 @@ package com.olivier.currencyapp.ui.exchangeRateFragment
 import androidx.lifecycle.*
 import com.olivier.currencyapp.base.network.CheckNetworkConnection
 import com.olivier.currencyapp.data.RatesItem
+import com.olivier.currencyapp.repositories.ExchangeRateRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

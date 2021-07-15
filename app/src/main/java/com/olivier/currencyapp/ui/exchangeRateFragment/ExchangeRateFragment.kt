@@ -95,8 +95,8 @@ class ExchangeRateFragment : Fragment() {
     }
 
     private fun updateUi() {
-        viewModel.setResultExchange(0)
-        viewModel.setUserExchange(1)
+        viewModel.setUserExchange(0)
+        viewModel.setResultExchange(1)
 
         binding.userSpinner.onItemSelectedListener = UserSpinnerAdapter(viewModel)
         binding.userSpinner.isEnabled = true
