@@ -44,6 +44,7 @@ class ExchangeRateFragment : Fragment() {
 
         uiWidgets()
         observeRatesItems()
+        observeInternetConnection()
 
         return binding.root
     }
@@ -56,7 +57,7 @@ class ExchangeRateFragment : Fragment() {
 
     private fun observeRatesItems() {
         //observe data in database
-        viewModel.ratesModel.observe(this, Observer {
+        viewModel.ratesItems.observe(this, Observer {
             if(it.isNotEmpty()){
                 updateUi()
             }else{
@@ -69,6 +70,14 @@ class ExchangeRateFragment : Fragment() {
         viewModel.result.observe(this){
             binding.resultEditText.setText(it.toString())
         }
+    }
+
+    private fun observeInternetConnection() {
+        viewModel.isNetworkConnected.observe(this, Observer {
+            if(it){
+                viewModel.updateRatesItems()
+            }
+        })
     }
 
     private fun initSpinner() {

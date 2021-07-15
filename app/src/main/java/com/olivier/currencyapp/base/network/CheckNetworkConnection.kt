@@ -4,11 +4,11 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.util.Log
 import com.olivier.currencyapp.repositories.ExchangeRateRepository
+import com.olivier.currencyapp.utils.Variables
 import javax.inject.Inject
 
 class CheckNetworkConnection @Inject constructor(
     private val connectivityManager : ConnectivityManager,
-    private val exchangeRateRepository: ExchangeRateRepository
 ) : ConnectivityManager.NetworkCallback(){
 
     fun checkConnection(){
@@ -17,8 +17,13 @@ class CheckNetworkConnection @Inject constructor(
 
     override fun onAvailable(network: Network) {
         super.onAvailable(network)
-        //download rest api from internet and save in DataStore
-        exchangeRateRepository.currencyFromRestApi()
+
+        Variables.isConnected.postValue(true)
         Log.i("TEST_INTERNET", "WORK")
+    }
+
+    override fun onLost(network: Network) {
+        super.onLost(network)
+        Variables.isConnected.postValue(false)
     }
 }

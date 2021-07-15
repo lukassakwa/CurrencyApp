@@ -16,8 +16,8 @@ import javax.inject.Inject
 class ExchangeRateRepository @Inject constructor(
     private val ratesDao: RatesDao,
     private val nbpRepository: NBPRepository
-) {
-    fun currencyFromRestApi(){
+){
+    fun saveRateItems(){
         CoroutineScope(Dispatchers.IO).launch {
             val response = nbpRepository.getCurrency(Constants.TABLE)
             if(response.isSuccessful){
@@ -34,7 +34,7 @@ class ExchangeRateRepository @Inject constructor(
         }
     }
 
-    fun readFromDatabase(): LiveData<List<RatesItem>> {
+    fun getRatesItems(): LiveData<List<RatesItem>> {
         return ratesDao.getAll()
     }
 }
