@@ -5,7 +5,6 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class NBPRepository @Inject constructor(private val nbpService: NBPService){
-    //private val client = RetrofitBuilder.retrofit().create(NBPService::class.java)
 
     suspend fun getCurrency(table : String) : Response<List<Currency>> = nbpService.getCurrency(table)
 }
