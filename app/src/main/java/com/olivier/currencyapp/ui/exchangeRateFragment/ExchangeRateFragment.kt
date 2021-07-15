@@ -44,6 +44,7 @@ class ExchangeRateFragment : Fragment() {
 
         uiWidgets()
         observeRatesItems()
+        observeConvertResult()
         observeInternetConnection()
 
         return binding.root
@@ -66,10 +67,14 @@ class ExchangeRateFragment : Fragment() {
             updateRecyclerView(it)
         })
 
+     }
+
+    private fun observeConvertResult() {
         //observe result
         viewModel.result.observe(this){
             binding.resultEditText.setText(it.toString())
         }
+
     }
 
     private fun observeInternetConnection() {
