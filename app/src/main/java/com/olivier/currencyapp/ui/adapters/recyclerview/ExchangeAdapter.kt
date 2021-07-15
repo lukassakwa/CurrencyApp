@@ -24,7 +24,7 @@ class ExchangeAdapter : RecyclerView.Adapter<ExchangeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        var binding : ExhcangeRecyclerViewAdapterBinding = DataBindingUtil.inflate(
+        val binding : ExhcangeRecyclerViewAdapterBinding = DataBindingUtil.inflate(
             layoutInflater,
             R.layout.exhcange_recycler_view_adapter,
             parent,

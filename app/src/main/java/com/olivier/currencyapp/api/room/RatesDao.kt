@@ -8,11 +8,9 @@ import com.olivier.currencyapp.data.RatesItem
 
 @Dao
 interface RatesDao {
-    //Observe elements in database and if some of them change, change the ui
     @Query("SELECT * FROM rates_items")
     fun getAll(): LiveData<List<RatesItem>>
 
-    //check if list is empty
     @Query("SELECT * FROM rates_items ORDER BY id LIMIT 1")
     fun getElement() : List<RatesItem>
 

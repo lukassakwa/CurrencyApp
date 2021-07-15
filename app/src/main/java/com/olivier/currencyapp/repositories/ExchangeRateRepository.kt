@@ -21,7 +21,6 @@ class ExchangeRateRepository @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             val response = nbpRepository.getCurrency(Constants.TABLE)
             if(response.isSuccessful){
-                //changing mid
                 var rates = response.body()!![0].rates!!
                 if(ratesDao.getElement().isEmpty()){
                     ratesDao.insertAll(rates)
