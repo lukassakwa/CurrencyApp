@@ -9,6 +9,7 @@ Tested on Pixel 2
 Built With
 
     Koltin - is a cross-platform, statically typed, general-purpose programming language with type inference.
+    MVVM -  Model-View-ViewModel architecture
     Hilt - dependency injection library for Android 
     Retrofit - the class through which your API interfaces are turned into callable objects
     OkHttp - HTTP client
