@@ -3,7 +3,6 @@ package com.olivier.currencyapp.api.room
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
-import androidx.room.OnConflictStrategy.REPLACE
 import com.olivier.currencyapp.data.RatesItem
 
 @Dao
@@ -14,10 +13,10 @@ interface RatesDao {
     @Query("SELECT * FROM rates_items ORDER BY id LIMIT 1")
     fun getElement() : List<RatesItem>
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateRates(ratesItems: List<RatesItem>)
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(rate: List<RatesItem>)
 
     @Query("DELETE FROM rates_items")
