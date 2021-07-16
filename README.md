@@ -10,6 +10,8 @@ Built With
 
     Koltin - is a cross-platform, statically typed, general-purpose programming language with type inference.
     MVVM -  Model-View-ViewModel architecture
+    VieModel - is designed to store and manage UI-related data in a lifecycle conscious way
+    LiveData - an observable data holder class
     Hilt - dependency injection library for Android
     Data Binding - support library that allows to bind UI components in layouts
     Retrofit - the class through which your API interfaces are turned into callable objects
