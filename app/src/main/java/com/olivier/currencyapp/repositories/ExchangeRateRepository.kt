@@ -24,7 +24,6 @@ class ExchangeRateRepository @Inject constructor(
                 val rates = response.body()!![0].rates!!
                 if(ratesDao.getElement().isEmpty()){
                     ratesDao.insertAll(rates)
-                    Log.i("UPDATE", "${ratesDao.getElement().isEmpty()}")
                 }else{
                     ratesDao.deleteAll()
                     ratesDao.insertAll(rates)
