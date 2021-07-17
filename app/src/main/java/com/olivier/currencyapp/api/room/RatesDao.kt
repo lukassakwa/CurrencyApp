@@ -13,9 +13,6 @@ interface RatesDao {
     @Query("SELECT * FROM rates_items ORDER BY id LIMIT 1")
     fun getElement() : List<RatesItem>
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateRates(ratesItems: List<RatesItem>)
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(rate: List<RatesItem>)
 
