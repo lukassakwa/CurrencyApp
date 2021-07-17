@@ -22,12 +22,10 @@ class ExchangeRateRepository @Inject constructor(
             val response = nbpRepository.getCurrency(Constants.TABLE)
             if(response.isSuccessful){
                 val rates = response.body()!![0].rates!!
-                if(ratesDao.getElement().isEmpty()){
-                    ratesDao.insertAll(rates)
-                }else{
+                if(ratesDao.getElement().isNotEmpty())
                     ratesDao.deleteAll()
-                    ratesDao.insertAll(rates)
-                }
+
+                ratesDao.insertAll(rates)
             } else {
                 Log.i("TEST_RETROFIT", response.message())
             }
