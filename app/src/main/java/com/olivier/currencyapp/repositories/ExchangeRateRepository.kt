@@ -21,11 +21,15 @@ class ExchangeRateRepository @Inject constructor(
         CoroutineScope(Dispatchers.IO).launch {
             val response = nbpRepository.getCurrency(Constants.TABLE)
             if(response.isSuccessful){
-                val rates = response.body()!![0].rates!!
-                if(ratesDao.getElement().isNotEmpty())
-                    ratesDao.deleteAll()
-
-                ratesDao.insertAll(rates)
+                val rates = response.body()?.get(0)?.rates
+                rates?.let {
+                    if(ratesDao.getElement().isEmpty()){
+                        ratesDao.insertAll(rates)
+                    }else{
+                        ratesDao.deleteAll()
+                        ratesDao.insertAll(rates)
+                    }
+                }
             } else {
                 Log.i("TEST_RETROFIT", response.message())
             }
